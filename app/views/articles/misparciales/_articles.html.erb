@@ -1,0 +1,16 @@
+<table border=true>
+
+<% @article.each do |a| %>
+           
+              <tr>
+              
+              <td><%= a.id %></td>
+              <td> <%= a.title %></td>
+              <td>  <%= a.status %></td>
+              <td><%= a.contenidorichtext %> </td>
+              
+              </tr>
+              
+              <%end %>
+
+</table>

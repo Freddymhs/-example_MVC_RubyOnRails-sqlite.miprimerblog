@@ -1,4 +1,13 @@
 class ArticlesController < ApplicationController
+#before_action :find_article
+
+def find_article
+     Article.find(params[:identificador])
+end
+
+def index 
+    @article = Article.all
+end
 
 def new  # instancia nuevo objeto 
     @article = Article.new   #instanciado desde el MODELO y enviar el objeto a la vista
@@ -7,7 +16,7 @@ def new  # instancia nuevo objeto
 end
 
 def update
-    @article = Article.find(params[:identificador])
+    @article = find_article
     @article.update({
         title:params[:article][:title] ,
         status:params[:article][:status],
@@ -28,20 +37,15 @@ render json: @res
 end
 
 def show
-    @article = Article.find(params[:identificador])
+    @article = find_article
 end
 
 def edit 
-    # consola a sql enbase aun usuario en base a su id
-
-
-    # @article = Article.new({
-    #     title:'freddy', status:0 ,contenidorichtext:'contenido a editar'
-    # })
-    @article = Article.find(params[:identificador])
+    @article = find_article
 end
+
 def destroy
-@article = Article.find(params[:identificador])
+  @article = find_article
 @article.destroy
 redirect_to root_path
 end
