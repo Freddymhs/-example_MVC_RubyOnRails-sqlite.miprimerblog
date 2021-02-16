@@ -1,30 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-Ruby on rails 
-VScode ruby
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 # archivos principales
 routes.rb
 app/controller/
@@ -57,7 +32,7 @@ ACTIVE RECORDS  => modelos que interactuan con la base de datos para hacer petic
 rails action_text:install => texto enriquecido       => rails db:migrate    
 parciales => son vitas que necesitan de un vista completa para desplegarse     =>  _archivo.html.erb   <%= render "carpeta/archivo" %>
 before_action && after_action => metodos de un Controlador para realizar una acciones especificas antes o despues.
-
+gema devise para autenticacion de los usuarios
 
 
 # en consola

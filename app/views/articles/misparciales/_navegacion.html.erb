@@ -2,6 +2,28 @@
 
 <ul>
 
+
+
+
+<%if  user_signed_in? %>
+              <li>
+              <%= link_to 'cerrar sesion' , destroy_user_session_path  , method: :delete %>
+              </li>
+<%else%>
+
+
+<li>
+<%= link_to 'iniciar sesion' , new_user_session_path  , method: :get %>
+</li>
+<li>
+<%= link_to 'registro sesion' , new_user_registration_path  , method: :get %>
+</li>
+
+<%end%>
+
+
+
+
 <li>
 <%= link_to "inicio" , root_path %>
 </li>

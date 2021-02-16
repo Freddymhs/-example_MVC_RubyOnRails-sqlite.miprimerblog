@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  root :to => "welcome#index"
+  devise_for :users
+  root :to => "welcome#index" #root to: "home#index"
   get '/' , to: "welcome#index"  #default
   get '/articles/index' , to:  "articles#index"  # as: :vertodos
-
 
 
 
