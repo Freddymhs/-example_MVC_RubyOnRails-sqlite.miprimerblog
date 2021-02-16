@@ -34,11 +34,41 @@ parciales => son vitas que necesitan de un vista completa para desplegarse     =
 before_action && after_action => metodos de un Controlador para realizar una acciones especificas antes o despues.
 gema devise para autenticacion de los usuarios
 
+# editar tablas ya creadas?
+ en rails el orm trabaja con las tablas, bajo la convencion de que estas en su ID tengan el nombre del "MODELO" en miniscula :) , si la tabla es Users el modelo User y el orm lo maneja como 'user' y tambien todas las tablas deben usar un id para su manejo.
+la tabla esta en plural      (Articles)
+el modelo en singular        (Article)
+orm lo maneja con el nombre del modelo+singular+minuscula  (article)
+
+GENERAR UNA MIGRACION IDEAL :)
+agregar campo -> rails generate migration [nombremigracion en PLURAL] [campo:tipodedato] (agregar "campo"  a la tabla articles )
+ejemplo
+```
+alternativa basica => agregar campo -> rails generate migration add_user_id_to_articles user_id:integer   // genera migracion basica      
+alternativa rails  => agregar campo -> rails generate migration add_user_id_to_articles user:references    // genera migracion ideal!!
+```
+REVISAR SI  ,esto genera la migracion ideal asi:
+```
+ add_reference :articles, :user, null: false, foreign_key: true    (un 'articles' debe tener un 'user'
+cambios en migracion antes de ejecutarlo?
+add_reference :articles, :user, null: "TRUE"    (un 'articles' puede existir sin un 'user')  de muchos a 0 :) es buena opcion ya que es comun.
+```
+  extra a la migracion si necesita un valor podemos darle default:'dato' 
+
+CONFIGURAR ASOCIACIONES DE LOS MODELOS
+```
+has_many :articles (tiene muchos ,  modelo en plural)
+belongs_to :user (pertenece      ,  modelo en singular)
+```
+con esto ya todo esta asociado , pero el controlador ahora debe mostrar datos mas completos por lo que es necesario cambios/mejoras.
+
+
 
 # en consola
 rails console
 Article.find(2)
+Article.last
 rails routes
 app/javascript  // webpack
-
+rails db:reset
 ctrl+t :D
